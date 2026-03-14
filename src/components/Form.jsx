@@ -46,6 +46,7 @@ const Form = () => {
             name="title"
             value={addData.title}
             onChange={handleChange}
+            required
           />
 
           <input
@@ -56,6 +57,7 @@ const Form = () => {
             name="body"
             value={addData.body}
             onChange={handleChange}
+            required
           />
 
           <button
