@@ -2,23 +2,32 @@ import React from "react";
 import { usePostContext } from "../context_api/PostContext";
 
 const Pagination = () => {
-  const { currentPage, totalPage, setCurrentPage } = usePostContext();
+  const { currentPage, totalPage, setCurrentPage, setEditUpdateData } =
+    usePostContext();
+
+  // handlePage next<->pre
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setEditUpdateData({});
+  };
+
   return (
     <>
       <div className="flex justify-center items-center gap-3 mt-6 flex-wrap">
         {/* Previous Button */}
         <button
-          onClick={() => setCurrentPage(currentPage - 1)}
+          onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className="px-4 py-2 bg-indigo-600 text-white 
                          rounded-lg hover:bg-indigo-500 transition"
         >
           Previous
         </button>
+
         {Array.from({ length: totalPage }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => handlePageChange(page)}
             className={`px-4 py-2 rounded-lg transition
         ${
           currentPage === page
@@ -32,7 +41,7 @@ const Pagination = () => {
 
         {/* Next Button */}
         <button
-          onClick={() => setCurrentPage(currentPage + 1)}
+          onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPage}
           className="px-4 py-2 bg-indigo-600 text-white 
                          rounded-lg hover:bg-indigo-500 transition"

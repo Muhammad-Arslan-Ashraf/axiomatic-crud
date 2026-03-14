@@ -11,6 +11,7 @@ const Form = () => {
     const { name, value } = e.target;
     setAddData((prev) => ({ ...prev, [name]: value }));
   };
+
   // submit data->handler
   const handleSubmit = (e) => {
     e.preventDefault();

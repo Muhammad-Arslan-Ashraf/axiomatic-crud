@@ -29,7 +29,7 @@ const Posts = () => {
     <>
       {data.map((curElem) => {
         const { id, body, title } = curElem;
-        console.log(curElem);
+        // console.log(curElem);
         return (
           <Card
             key={id}
